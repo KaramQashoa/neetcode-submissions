@@ -1,0 +1,31 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        fin_nums = [0 for i in range(len(nums))]
+        total_prod = 1
+        dec = {}
+        
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                dec[i] = 0
+            else:
+                total_prod *= nums[i]
+
+        if len(nums) == len(dec):
+            return fin_nums
+        
+        if len(dec) == 1:
+            for i in range (len(fin_nums)):
+                if i in dec:
+                    fin_nums[i] = total_prod
+                else:
+                    fin_nums[i] = 0
+
+        elif  len(dec) > 1:
+            for i in range (len(fin_nums)):
+                fin_nums[i] = 0
+            
+        else:
+            for i in range (len(fin_nums)):
+                fin_nums[i] = (int) (total_prod / nums[i])
+    
+        return fin_nums
